@@ -1,1 +1,0 @@
-print("no homework, codewars day")
