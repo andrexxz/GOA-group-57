@@ -81,9 +81,9 @@ console.log(Object.values(book1));
 
 //5
 let movie = {
-    name: "Inception",
-    genre: "Sci-Fi",
-    rating: 8.8
+    name: "spirder man",
+    genre: "action",
+    rating: 8.5
 };
 let movieKeys = Object.keys(movie);
 for (let i = 0; i < movieKeys.length; i++) {
