@@ -56,19 +56,19 @@ function getMinOfThree(x, y, z) {
     return Math.min(x, y, z);
 }
 console.log(getMinOfThree(5, 2, 8));
-
+/*
 //5
 function getRandomNumber() {
-    return Math.random();
+    return Math.random(0, 2);
 }   
 console.log(getRandomNumber());
 
 //6
 function getRandomInt1to10() {
-    return Math.floor(Math.random() * 10) + 1;
+    return Math.random(0, 11);
 }
 console.log(getRandomInt1to10());
-
+*/
 //7
 function getSquareRoot(num) {
     return Math.sqrt(num);
