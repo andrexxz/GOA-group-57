@@ -21,64 +21,75 @@
 -----დაამატეთ ახალი ელემენტი container-ში. */
 
 // 1
+
 function changeParagraphText() {
-    const paragraph = document.querySelector('p');
+    const paragraph = document.getElementById('myParagraph');
     paragraph.textContent = "Hello, DOM!";
 }
 
 // 2
+
 function changeButtonStyle() {
-    const button = document.querySelector('button');
+    const button = document.getElementById('myButton');
     button.style.backgroundColor = 'red';
     button.style.color = 'white';
 }
 
 // 3
+
 function addNewParagraph() {
-    const div = document.querySelector('div');
+    const div = document.getElementById('myDiv');
     const newParagraph = document.createElement('p');
     newParagraph.textContent = "New paragraph";
     div.appendChild(newParagraph);
 }
 
 // 4
-function buttonClicked() {
+
+function showAlert() {
     alert("Button clicked!");
 }
 
 // 5
+
 function validateForm(event) {
     event.preventDefault();
-    const input = document.querySelector('input');
-    const errorMessage = document.querySelector('.error-message');
-    if (input.value.trim() === "") {
+    const input = document.getElementById('myInput');
+    const errorMessageId = 'error-message';
+    let errorMessage = document.getElementById(errorMessageId);
+
+    if (input.value.trim() === '') {
         if (!errorMessage) {
-            const error = document.createElement('span');
-            error.className = 'error-message';
-            error.style.color = 'red';
-            error.textContent = "This field cannot be empty.";
-            input.parentNode.insertBefore(error, input.nextSibling);
+            errorMessage = document.createElement('span');
+            errorMessage.id = errorMessageId;
+            errorMessage.style.color = 'red';
+            errorMessage.textContent = "This field cannot be empty.";
+            input.parentNode.insertBefore(errorMessage, input.nextSibling);
         }
     } else {
         if (errorMessage) {
             errorMessage.remove();
         }
         alert("Form submitted!");
-    }   
+    }
 }
 
 // 6
 function setupButtonHandlers() {
-    const buttons = document.querySelectorAll('button');
-    const heading = document.querySelector('h2');
-    buttons.forEach((button, index) => {
-        button.addEventListener('click', () => {
-            heading.textContent = `Button ${index + 1} clicked!`;
-            const colors = ['lightblue', 'lightgreen', 'lightcoral'];
-            heading.style.backgroundColor = colors[index];
-        });
-    });
-}   
+    const header = document.getElementById('myHeader');
+    document.getElementById('btn1').onclick = function() {
+        header.textContent = "Button 1 clicked!";
+        header.style.backgroundColor = 'lightblue';
+    }
+    document.getElementById('btn2').onclick = function() {
+        header.textContent = "Button 2 clicked!";
+        header.style.backgroundColor = 'lightgreen';
+    }
+    document.getElementById('btn3').onclick = function() {
+        header.textContent = "Button 3 clicked!";
+        header.style.backgroundColor = 'lightcoral';
+    }
+}
 
 // 7
 let itemCount = 0;
@@ -89,3 +100,11 @@ function addItem() {
     newItem.textContent = `Item ${itemCount}`;
     container.appendChild(newItem);
 }
+
+document.getElementById('myButton').onclick = changeButtonStyle;
+document.getElementById('alertButton').onclick = showAlert;
+document.getElementById('myForm').onsubmit = validateForm;
+document.getElementById('addItemButton').onclick = addItem;
+setupButtonHandlers();
+document.getElementById('myParagraph').onclick = changeParagraphText;
+document.getElementById('myDiv').onclick = addNewParagraph;
