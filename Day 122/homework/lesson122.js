@@ -35,10 +35,14 @@ document.getElementById('createUserBtn').addEventListener('click', function() {
     const email = document.getElementById('emailInput').value;
     const password = document.getElementById('passwordInput').value;
     const newUser = new User(name, email, password);
+
     console.log(newUser);
+
     const userList = document.getElementById('userList');
     const listItem = document.createElement('li');
+
     listItem.textContent = `Name: ${newUser.name}, Email: ${newUser.email}`;
+    
     userList.appendChild(listItem);
 }
 );
