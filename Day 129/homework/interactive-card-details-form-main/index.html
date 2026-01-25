@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+
+  <title>Frontend Mentor | Interactive card details form</title>
+  <link rel="stylesheet" href="lesson129.css">
+
+</head>
+
+<body>
+
+  <div class="purple">
+    <div class="frontcard">
+      <div class="twocircle">
+        <div class="bigcircle"></div>
+        <div class="smallcircle"></div>
+      </div>
+      <div class="number-name">
+        <h1 id="cardnumber">0000 0000 0000 0000</h1>
+        <div class="name-date">
+          <p class="username">Jane Appleseed</p>
+          <div>
+            <p id="month">00</p>
+            <p>/</p>
+            <p id="years">00</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
+
+
+    <div class="backcard">
+      <div class="blackdiv"></div>
+      <div class="cvcdiv">
+        <p id="cvc">000</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="whitediv">
+    <form id="form">
+      <div class="name-card">
+        <div>
+          <label for="name">CARDHOLDER NAME</label>
+          <input type="text" id="name" name="name" placeholder="e.g Jane Appleseed">
+        </div>
+        <div>
+          <label for="number">CARD NUMBER</label>
+          <input type="text" id="number" name="number" placeholder="e.g 1234 5678 9123 0000">
+        </div>
+      </div>
+
+      <div class="date-cvc">
+        <div class="date">
+          <label for="date">EXP.DATE (MM/YY)</label>
+          <div>
+            <input type="text" name="month" id="date" placeholder="MM">
+            <input type="text" name="years" id="" placeholder="YY">
+          </div>
+        </div>
+
+        <div class="cvc">
+          <label for="cvc">CVC</label>
+          <input type="text" name="cvc" id="cvc" placeholder="e.g 123">
+        </div>
+      </div>
+      <button type="submit" id="button">Confirm</button>
+    </form>
+  </div>
+
+  <script src="lesson129.js"></script>
+</body>
+
+</html>
