@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Frontend Mentor | E-commerce product page</title>
+
+    <link rel="stylesheet" href="lesson140.css" />
+  </head>
+
+  <body>
+    <header>
+      <div class="leftDIV">
+        <img class="menu" src="images/icon-menu.svg" alt="" />
+        <h1>sneaker</h1>
+        <nav>
+          <a href="#">Collections</a>
+          <a href="#">Men</a>
+          <a href="#">Women</a>
+          <a href="#">About</a>
+          <a href="#">Contact</a>
+        </nav>
+      </div>
+      <div class="rightDIV">
+        <img class="cartIMG" id="cartIMG" src="images/icon-cart.svg" alt="" />
+        <img class="avatarIMG" src="images/image-avatar.png" alt="" />
+      </div>
+    </header>
+    <main>
+      <div class="mainleftDIV">
+        <div class="arrowdivleft arrowdiv">
+          <img class="arrow leftarrow" src="images/icon-previous.svg" alt="" />
+        </div>
+
+        <img
+          class="mainIMG"
+          id="mainIMG"
+          src="images/image-product-1.jpg"
+          alt=""
+        />
+        <div class="arrowdivright arrowdiv">
+          <img class="arrow rightarrow" src="images/icon-next.svg" alt="" />
+        </div>
+
+        <div class="mainBOX">
+          <img class="img" src="images/image-product-1.jpg" alt="" />
+          <img class="img" src="images/image-product-2.jpg" alt="" />
+          <img class="img" src="images/image-product-3.jpg" alt="" />
+          <img class="img" src="images/image-product-4.jpg" alt="" />
+        </div>
+      </div>
+      <div class="mainrigntDIV">
+        <div class="titleDIV">
+          <p>Sneaker Company</p>
+          <h1>Fall Limited Edition Sneakers</h1>
+        </div>
+
+        <div class="infoDIV">
+          <p>
+            These low-profile sneakers are your perfect casual wear companion.
+            Featuring a durable rubber outer sole, they’ll withstand everything
+            the weather can offer.
+          </p>
+          <div class="priceDIV">
+            <h1 id="h1">$125.00</h1>
+            <h3>50%</h3>
+          </div>
+          <p class="realprice">$250.00</p>
+        </div>
+
+        <div class="buttonDIV">
+          <button class="plusminus">
+            <img id="minus" src="images/icon-minus.svg" alt="" />
+            <p id="p">0</p>
+            <img id="plus" src="images/icon-plus.svg" alt="" />
+          </button>
+          <button id="add" class="add">
+            <img
+              src="images/shopping_cart_24dp_000000_FILL0_wght400_GRAD0_opsz24.png"
+              alt=""
+            />
+            Add to cart
+          </button>
+        </div>
+      </div>
+      <div id="cartDIV">
+        <h3>Cart</h3>
+        <div id="priceDIV">
+          <img src="images/image-product-1.jpg" alt="" />
+          <div id="info">
+            <p>Fall Limited Edition Sneakers</p>
+            <div>
+              $125.00x
+              <p id="quantity"></p>
+              <span id="span"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script src="lesson140.js"></script>
+  </body>
+</html>

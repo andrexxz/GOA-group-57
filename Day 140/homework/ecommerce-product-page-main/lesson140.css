@@ -1,0 +1,293 @@
+@import url("https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Kumbh+Sans:wght,YOPQ@100..900,300&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: "Kumbh Sans", sans-serif;
+  gap: 50px;
+  margin-bottom: 100px;
+}
+
+header {
+  width: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  border-bottom: 1px solid hsl(219, 9%, 45%);
+}
+
+.leftDIV {
+  display: flex;
+  gap: 40px;
+  align-items: center;
+  justify-content: center;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+nav a {
+  color: hsl(219, 9%, 45%);
+  text-decoration: none;
+}
+
+.rightDIV {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
+}
+
+.cartIMG {
+  width: 30px;
+  cursor: pointer;
+}
+
+.avatarIMG {
+  width: 50px;
+}
+
+.menu {
+  display: none;
+}
+
+main {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.mainleftDIV {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.mainIMG {
+  width: 500px;
+  border-radius: 20px;
+}
+
+.img {
+  width: 110px;
+  border-radius: 20px;
+}
+
+.mainBOX {
+  display: flex;
+  gap: 15px;
+}
+
+.mainrigntDIV {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.titleDIV {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.titleDIV p {
+  color: hsl(219, 9%, 45%);
+}
+
+.titleDIV h1 {
+  color: hsl(0, 0%, 0%);
+  font-size: 40px;
+  max-width: 400px;
+}
+
+.infoDIV {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.infoDIV p {
+  color: hsl(219, 9%, 45%);
+  max-width: 550px;
+}
+
+.priceDIV {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.priceDIV h1 {
+  color: hsl(0, 0%, 0%);
+}
+
+.priceDIV h3 {
+  color: white;
+  background-color: hsl(220, 13%, 13%);
+  padding: 6px 12px;
+  border-radius: 10px;
+}
+
+.realprice {
+  color: hsl(219, 9%, 45%);
+  text-decoration: line-through;
+}
+
+.buttonDIV {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.plusminus {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 180px;
+  height: 60px;
+  border-radius: 20px;
+  border: none;
+  padding: 10px;
+  color: hsl(0, 0%, 0%);
+  font-weight: 900;
+}
+
+.plusminus img {
+  cursor: pointer;
+}
+
+.add {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 250px;
+  height: 60px;
+  border-radius: 10px;
+  border: none;
+  background-color: hsl(26, 100%, 55%);
+  gap: 5px;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.arrowdiv {
+  display: none;
+}
+
+#cartDIV {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  position: absolute;
+  right: 153px;
+  top: 80px;
+  display: none;
+  max-width: 250px;
+  background-color: white;
+  border-radius: 15px;
+  border: 1px black solid;
+  padding: 15px;
+}
+
+#cartDIV h3 {
+  padding: 20px 0px;
+  border-bottom: 1px solid hsl(217, 8%, 68%);
+}
+
+#priceDIV {
+  display: flex;
+  gap: 10px;
+}
+
+#priceDIV img {
+  width: 70px;
+  border-radius: 10px;
+}
+
+#info p {
+  color: hsl(216, 7%, 61%);
+}
+
+#info div {
+  display: flex;
+  gap: 5px;
+  color: hsl(216, 7%, 61%);
+}
+#info div span {
+  color: black;
+}
+
+@media (max-width: 1150px) {
+  main {
+    flex-direction: column;
+  }
+
+  nav {
+    display: none;
+  }
+
+  .menu {
+    display: block;
+    cursor: pointer;
+  }
+}
+
+@media (max-width: 600px) {
+  .mainBOX {
+    display: none;
+  }
+
+  .arrowdivleft {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    z-index: 2;
+    background-color: rgb(255, 255, 255);
+    width: 50px;
+    height: 50px;
+    display: inline-block;
+    left: 20px;
+    top: 300px;
+  }
+
+  .arrowdivright {
+    position: absolute;
+    z-index: 2;
+    background-color: rgb(255, 255, 255);
+    width: 50px;
+    height: 50px;
+    display: inline-block;
+  }
+
+  .leftarrow {
+    width: 15px;
+    margin: 0 auto;
+  }
+
+  .rightarrow {
+    width: 15px;
+  }
+
+  .mainIMG {
+    width: 100%;
+    z-index: 1;
+  }
+}
