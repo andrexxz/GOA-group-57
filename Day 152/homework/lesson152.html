@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Todo App</title>
+    <link rel="stylesheet" href="lesson152.css" />
+  </head>
+  <body>
+    <div class="app">
+      <h2>Todo List</h2>
+
+      <div class="input-group">
+        <input id="taskInput" placeholder="Add task..." />
+        <button class="add-btn" onclick="todo.addTask()">Add</button>
+      </div>
+
+      <ul id="taskList"></ul>
+    </div>
+
+    <div class="modal" id="modal">
+      <div class="modal-content">
+        <h3>Edit Task</h3>
+        <input id="editInput" />
+        <div class="modal-buttons">
+          <button class="save" onclick="todo.saveEdit()">Save</button>
+          <button class="cancel" onclick="todo.closeModal()">Cancel</button>
+        </div>
+      </div>
+    </div>
+    <script src="lesson152.js"></script>
+  </body>
+</html>
