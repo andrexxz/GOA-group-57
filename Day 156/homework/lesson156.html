@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>LocalStorage Practice</title>
+<style>
+  body {
+    font-family: Arial;
+    transition: 0.3s;
+    padding: 20px;
+  }
+
+  .dark {
+    background: #222;
+    color: white;
+  }
+
+  button {
+    margin: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+
+  li {
+    margin: 5px 0;
+  }
+</style>
+</head>
+<body>
+
+<!-- 1) NAME INPUT -->
+<h2>1) Name Saver</h2>
+<input type="text" id="nameInput" placeholder="Enter name">
+<button onclick="saveName()">Submit</button>
+<p id="nameOutput"></p>
+
+<hr>
+
+<!-- 2) THEME -->
+<h2>2) Theme Toggle</h2>
+<button onclick="toggleTheme()">Toggle Theme</button>
+
+<hr>
+
+<!-- 3) COUNTER -->
+<h2>3) Counter</h2>
+<p id="counterValue">0</p>
+<button onclick="increase()">+</button>
+<button onclick="decrease()">-</button>
+<button onclick="reset()">Reset</button>
+
+<hr>
+
+<!-- 4 & 5) TODO -->
+<h2>4 & 5) Todo App</h2>
+<input type="text" id="todoInput" placeholder="New task">
+<button onclick="addTask()">Add</button>
+<ul id="todoList"></ul>
+
+<script>
+
+// -------- 1) NAME --------
+function saveName() {
+  let name = document.getElementById("nameInput").value;
+  localStorage.setItem("name", name);
+  document.getElementById("nameOutput").innerText = name;
+}
+
+function loadName() {
+  let name = localStorage.getItem("name");
+  if (name) {
+    document.getElementById("nameOutput").innerText = name;
+  }
+}
+
+// -------- 2) THEME --------
+function toggleTheme() {
+  document.body.classList.toggle("dark");
+
+  if (document.body.classList.contains("dark")) {
+    localStorage.setItem("theme", "dark");
+  } else {
+    localStorage.setItem("theme", "light");
+  }
+}
+
+function loadTheme() {
+  let theme = localStorage.getItem("theme");
+
+  if (theme === "dark") {
+    document.body.classList.add("dark");
+  }
+}
+
+// -------- 3) COUNTER --------
+let count = 0;
+
+function loadCounter() {
+  let saved = localStorage.getItem("count");
+  if (saved) {
+    count = parseInt(saved);
+  }
+  updateCounter();
+}
+
+function updateCounter() {
+  document.getElementById("counterValue").innerText = count;
+  localStorage.setItem("count", count);
+}
+
+function increase() {
+  count++;
+  updateCounter();
+}
+
+function decrease() {
+  count--;
+  updateCounter();
+}
+
+function reset() {
+  count = 0;
+  updateCounter();
+}
+
+// -------- 4 & 5) TODO --------
+let tasks = [];
+
+function loadTasks() {
+  let saved = localStorage.getItem("tasks");
+  if (saved) {
+    tasks = JSON.parse(saved);
+  }
+  renderTasks();
+}
+
+function saveTasks() {
+  localStorage.setItem("tasks", JSON.stringify(tasks));
+}
+
+function addTask() {
+  let text = document.getElementById("todoInput").value;
+  if (text === "") return;
+
+  tasks.push(text);
+  saveTasks();
+  renderTasks();
+
+  document.getElementById("todoInput").value = "";
+}
+
+function deleteTask(index) {
+  tasks.splice(index, 1);
+  saveTasks();
+  renderTasks();
+}
+
+function renderTasks() {
+  let list = document.getElementById("todoList");
+  list.innerHTML = "";
+
+  tasks.forEach(function(task, i) {
+    let li = document.createElement("li");
+
+    li.innerText = task + " ";
+
+    let btn = document.createElement("button");
+    btn.innerText = "Delete";
+    btn.onclick = function() {
+      deleteTask(i);
+    };
+
+    li.appendChild(btn);
+    list.appendChild(li);
+  });
+}
+
+// -------- LOAD EVERYTHING --------
+loadName();
+loadTheme();
+loadCounter();
+loadTasks();
+
+</script>
+
+</body>
+</html>
