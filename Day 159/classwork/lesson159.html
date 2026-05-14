@@ -1,0 +1,500 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo App</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+      }
+
+      body {
+        background: black;
+        color: white;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 40px;
+      }
+
+      .app {
+        width: 550px;
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        margin-bottom: 40px;
+      }
+
+      .logo-box {
+        width: 42px;
+        height: 42px;
+        border: 3px solid white;
+        border-radius: 8px;
+        position: relative;
+      }
+
+      .logo-box::before {
+        content: '✓';
+        position: absolute;
+        left: 7px;
+        top: 0px;
+        font-size: 28px;
+        font-weight: bold;
+      }
+
+      .logo h1 {
+        font-size: 52px;
+        font-weight: bold;
+      }
+
+      .stats {
+        border: 1px solid #c7a77a;
+        border-radius: 20px;
+        padding: 35px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 30px;
+      }
+
+      .stats-text h2 {
+        font-size: 48px;
+        margin-bottom: 8px;
+      }
+
+      .stats-text p {
+        font-size: 24px;
+        color: #ddd;
+      }
+
+      .circle {
+        width: 170px;
+        height: 170px;
+        background: #98b933;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 58px;
+      }
+
+      .input-area {
+        display: flex;
+        gap: 12px;
+        margin-bottom: 25px;
+      }
+
+      .input-area input {
+        flex: 1;
+        padding: 20px;
+        border: none;
+        border-radius: 12px;
+        background: #18253b;
+        color: white;
+        font-size: 18px;
+        outline: none;
+      }
+
+      .input-area input::placeholder {
+        color: #97a0ae;
+      }
+
+      .add-btn {
+        width: 70px;
+        border: none;
+        border-radius: 12px;
+        background: #98b933;
+        font-size: 42px;
+        cursor: pointer;
+      }
+
+      .tasks {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+      }
+
+      .task {
+        border: 1px solid #c7a77a;
+        border-radius: 14px;
+        padding: 22px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .task-left {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+        flex: 1;
+      }
+
+      .check {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        border: 3px solid #00ff88;
+        cursor: pointer;
+        transition: 0.2s;
+        flex-shrink: 0;
+      }
+
+      .check.completed {
+        background: #00cc66;
+        border-color: #00cc66;
+      }
+
+      .task-text {
+        font-size: 24px;
+        word-break: break-word;
+      }
+
+      .task-text.completed {
+        text-decoration: line-through;
+        opacity: 0.5;
+      }
+
+      .task-actions {
+        display: flex;
+        gap: 12px;
+        margin-left: 15px;
+      }
+
+      .task-actions button {
+        background: none;
+        border: none;
+        color: #d8c0a1;
+        font-size: 28px;
+        cursor: pointer;
+        transition: 0.2s;
+      }
+
+      .task-actions button:hover {
+        transform: scale(1.1);
+      }
+
+      .empty {
+        text-align: center;
+        color: #777;
+        margin-top: 15px;
+        font-size: 18px;
+      }
+
+      /* EDIT MODAL */
+
+      .modal {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.7);
+
+        display: none;
+        justify-content: center;
+        align-items: center;
+
+        z-index: 1000;
+      }
+
+      .modal-box {
+        width: 420px;
+        background: #111;
+        border: 1px solid #c7a77a;
+        border-radius: 18px;
+        padding: 30px;
+
+        animation: popup 0.2s ease;
+      }
+
+      .modal-box h2 {
+        font-size: 28px;
+        margin-bottom: 20px;
+      }
+
+      .modal-box input {
+        width: 100%;
+        padding: 16px;
+        border: none;
+        border-radius: 10px;
+        background: #18253b;
+        color: white;
+        font-size: 18px;
+        margin-bottom: 20px;
+        outline: none;
+      }
+
+      .modal-buttons {
+        display: flex;
+        justify-content: flex-end;
+        gap: 12px;
+      }
+
+      .modal-buttons button {
+        padding: 12px 24px;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        font-size: 16px;
+      }
+
+      .cancel-btn {
+        background: #333;
+        color: white;
+      }
+
+      .save-btn {
+        background: #98b933;
+        color: black;
+      }
+
+      @keyframes popup {
+        from {
+          transform: scale(0.8);
+          opacity: 0;
+        }
+
+        to {
+          transform: scale(1);
+          opacity: 1;
+        }
+      }
+
+      @media (max-width: 600px) {
+        .app {
+          width: 100%;
+        }
+
+        .stats {
+          flex-direction: column;
+          gap: 25px;
+          text-align: center;
+        }
+
+        .stats-text h2 {
+          font-size: 38px;
+        }
+
+        .circle {
+          width: 140px;
+          height: 140px;
+          font-size: 45px;
+        }
+
+        .task-text {
+          font-size: 18px;
+        }
+
+        .modal-box {
+          width: 92%;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="app">
+      <div class="logo">
+        <div class="logo-box"></div>
+        <h1>TODO</h1>
+      </div>
+
+      <div class="stats">
+        <div class="stats-text">
+          <h2>Task Done</h2>
+          <p>Keep it up</p>
+        </div>
+
+        <div class="circle" id="progress">0/0</div>
+      </div>
+
+      <div class="input-area">
+        <input type="text" id="taskInput" placeholder="Write your next task" />
+        <button class="add-btn" id="addBtn">+</button>
+      </div>
+
+      <div class="tasks" id="tasks"></div>
+
+      <div class="empty" id="emptyText">No tasks yet</div>
+    </div>
+
+    <!-- MODAL -->
+
+    <div class="modal" id="modal">
+      <div class="modal-box">
+        <h2>Edit Task</h2>
+
+        <input type="text" id="editInput" />
+
+        <div class="modal-buttons">
+          <button class="cancel-btn" id="cancelBtn">Cancel</button>
+          <button class="save-btn" id="saveBtn">Save</button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const taskInput = document.getElementById('taskInput');
+      const addBtn = document.getElementById('addBtn');
+      const tasksDiv = document.getElementById('tasks');
+      const progress = document.getElementById('progress');
+      const emptyText = document.getElementById('emptyText');
+
+      const modal = document.getElementById('modal');
+      const editInput = document.getElementById('editInput');
+      const cancelBtn = document.getElementById('cancelBtn');
+      const saveBtn = document.getElementById('saveBtn');
+
+      let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+
+      let currentEditIndex = null;
+
+      function saveTasks() {
+        localStorage.setItem('tasks', JSON.stringify(tasks));
+      }
+
+      function updateStats() {
+        const completed = tasks.filter((task) => task.completed).length;
+
+        progress.textContent = `${completed}/${tasks.length}`;
+
+        if (tasks.length === 0) {
+          emptyText.style.display = 'block';
+        } else {
+          emptyText.style.display = 'none';
+        }
+      }
+
+      function renderTasks() {
+        tasksDiv.innerHTML = '';
+
+        tasks.forEach((task, index) => {
+          const taskDiv = document.createElement('div');
+          taskDiv.className = 'task';
+
+          const left = document.createElement('div');
+          left.className = 'task-left';
+
+          const check = document.createElement('div');
+          check.className = 'check';
+
+          if (task.completed) {
+            check.classList.add('completed');
+          }
+
+          check.addEventListener('click', () => {
+            tasks[index].completed = !tasks[index].completed;
+
+            saveTasks();
+            renderTasks();
+          });
+
+          const text = document.createElement('div');
+          text.className = 'task-text';
+          text.textContent = task.text;
+
+          if (task.completed) {
+            text.classList.add('completed');
+          }
+
+          left.appendChild(check);
+          left.appendChild(text);
+
+          const actions = document.createElement('div');
+          actions.className = 'task-actions';
+
+          const editBtn = document.createElement('button');
+          editBtn.innerHTML = '✎';
+
+          editBtn.addEventListener('click', () => {
+            modal.style.display = 'flex';
+
+            editInput.value = task.text;
+
+            currentEditIndex = index;
+
+            editInput.focus();
+          });
+
+          const deleteBtn = document.createElement('button');
+          deleteBtn.innerHTML = '🗑';
+
+          deleteBtn.addEventListener('click', () => {
+            tasks.splice(index, 1);
+
+            saveTasks();
+            renderTasks();
+          });
+
+          actions.appendChild(editBtn);
+          actions.appendChild(deleteBtn);
+
+          taskDiv.appendChild(left);
+          taskDiv.appendChild(actions);
+
+          tasksDiv.appendChild(taskDiv);
+        });
+
+        updateStats();
+      }
+
+      function addTask() {
+        const text = taskInput.value.trim();
+
+        if (text === '') {
+          return;
+        }
+
+        tasks.push({
+          text: text,
+          completed: false,
+        });
+
+        taskInput.value = '';
+
+        saveTasks();
+        renderTasks();
+      }
+
+      addBtn.addEventListener('click', addTask);
+
+      taskInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+          addTask();
+        }
+      });
+
+      saveBtn.addEventListener('click', () => {
+        const newText = editInput.value.trim();
+
+        if (newText !== '') {
+          tasks[currentEditIndex].text = newText;
+
+          saveTasks();
+          renderTasks();
+
+          modal.style.display = 'none';
+        }
+      });
+
+      cancelBtn.addEventListener('click', () => {
+        modal.style.display = 'none';
+      });
+
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+          modal.style.display = 'none';
+        }
+      });
+
+      renderTasks();
+    </script>
+  </body>
+</html>
