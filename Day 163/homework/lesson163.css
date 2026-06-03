@@ -1,0 +1,290 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background: black;
+  color: white;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+}
+
+.app {
+  width: 550px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 40px;
+}
+
+.logo-box {
+  width: 42px;
+  height: 42px;
+  border: 3px solid white;
+  border-radius: 8px;
+  position: relative;
+}
+
+.logo-box::before {
+  content: '✓';
+  position: absolute;
+  left: 7px;
+  top: 0px;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.logo h1 {
+  font-size: 52px;
+  font-weight: bold;
+}
+
+.stats {
+  border: 1px solid #c7a77a;
+  border-radius: 20px;
+  padding: 35px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.stats-text h2 {
+  font-size: 48px;
+  margin-bottom: 8px;
+}
+
+.stats-text p {
+  font-size: 24px;
+  color: #ddd;
+}
+
+.circle {
+  width: 170px;
+  height: 170px;
+  background: #98b933;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 58px;
+}
+
+.input-area {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 25px;
+}
+
+.input-area input {
+  flex: 1;
+  padding: 20px;
+  border: none;
+  border-radius: 12px;
+  background: #18253b;
+  color: white;
+  font-size: 18px;
+  outline: none;
+}
+
+.input-area input::placeholder {
+  color: #97a0ae;
+}
+
+.add-btn {
+  width: 70px;
+  border: none;
+  border-radius: 12px;
+  background: #98b933;
+  font-size: 42px;
+  cursor: pointer;
+}
+
+.tasks {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.task {
+  border: 1px solid #c7a77a;
+  border-radius: 14px;
+  padding: 22px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.task-left {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex: 1;
+}
+
+.check {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 3px solid #00ff88;
+  cursor: pointer;
+  transition: 0.2s;
+  flex-shrink: 0;
+}
+
+.check.completed {
+  background: #00cc66;
+  border-color: #00cc66;
+}
+
+.task-text {
+  font-size: 24px;
+  word-break: break-word;
+}
+
+.task-text.completed {
+  text-decoration: line-through;
+  opacity: 0.5;
+}
+
+.task-actions {
+  display: flex;
+  gap: 12px;
+  margin-left: 15px;
+}
+
+.task-actions button {
+  background: none;
+  border: none;
+  color: #d8c0a1;
+  font-size: 28px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.task-actions button:hover {
+  transform: scale(1.1);
+}
+
+.empty {
+  text-align: center;
+  color: #777;
+  margin-top: 15px;
+  font-size: 18px;
+}
+
+/* EDIT MODAL */
+
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+
+  display: none;
+  justify-content: center;
+  align-items: center;
+
+  z-index: 1000;
+}
+
+.modal-box {
+  width: 420px;
+  background: #111;
+  border: 1px solid #c7a77a;
+  border-radius: 18px;
+  padding: 30px;
+
+  animation: popup 0.2s ease;
+}
+
+.modal-box h2 {
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+.modal-box input {
+  width: 100%;
+  padding: 16px;
+  border: none;
+  border-radius: 10px;
+  background: #18253b;
+  color: white;
+  font-size: 18px;
+  margin-bottom: 20px;
+  outline: none;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.modal-buttons button {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.cancel-btn {
+  background: #333;
+  color: white;
+}
+
+.save-btn {
+  background: #98b933;
+  color: black;
+}
+
+@keyframes popup {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 600px) {
+  .app {
+    width: 100%;
+  }
+
+  .stats {
+    flex-direction: column;
+    gap: 25px;
+    text-align: center;
+  }
+
+  .stats-text h2 {
+    font-size: 38px;
+  }
+
+  .circle {
+    width: 140px;
+    height: 140px;
+    font-size: 45px;
+  }
+
+  .task-text {
+    font-size: 18px;
+  }
+
+  .modal-box {
+    width: 92%;
+  }
+}

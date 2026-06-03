@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo App</title>
+    <link rel="stylesheet" href="lesson160.css">
+  </head>
+
+  <body>
+    <div class="app">
+      <div class="logo">
+        <div class="logo-box"></div>
+        <h1>TODO</h1>
+      </div>
+
+      <div class="stats">
+        <div class="stats-text">
+          <h2>Task Done</h2>
+          <p>Keep it up</p>
+        </div>
+
+        <div class="circle" id="progress">0/0</div>
+      </div>
+
+      <div class="input-area">
+        <input type="text" id="taskInput" placeholder="Write your next task" />
+        <button class="add-btn" id="addBtn">+</button>
+      </div>
+
+      <div class="tasks" id="tasks"></div>
+
+      <div class="empty" id="emptyText">No tasks yet</div>
+    </div>
+
+    <!-- MODAL -->
+
+    <div class="modal" id="modal">
+      <div class="modal-box">
+        <h2>Edit Task</h2>
+
+        <input type="text" id="editInput" />
+
+        <div class="modal-buttons">
+          <button class="cancel-btn" id="cancelBtn">Cancel</button>
+          <button class="save-btn" id="saveBtn">Save</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="lesson160.js"></script>
+  </body>
+</html>
