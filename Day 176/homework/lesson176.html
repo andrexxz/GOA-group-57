@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Premium Store</title>
+    <link rel="stylesheet" href="lesson176.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="logo">EliteStore</div>
+      <div class="search-container">
+        <input type="text" id="searchInput" placeholder="ძებნა" />
+      </div>
+      <div class="cart-summary">
+        <span class="cart-icon">🛒</span>
+        <span class="cart-total-price">₾0.00</span>
+      </div>
+    </nav>
+
+    <main>
+      <div class="loading" id="loadingSpinner">
+        <div class="spinner"></div>
+        <p>იტვირთება პროდუქტები...</p>
+      </div>
+      
+      <div class="product-grid" id="productGrid">
+      </div>
+    </main>
+
+    <div class="modal-overlay" id="productModal">
+      <div class="modal-content">
+        <button class="close-modal" id="closeModal">&times;</button>
+        <div class="modal-body" id="modalBody">
+        </div>
+      </div>
+    </div>
+
+    <script src="lesson176.js"></script>
+  </body>
+</html>
