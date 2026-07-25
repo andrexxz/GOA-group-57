@@ -1,0 +1,1 @@
+//training whole js for next lesson
